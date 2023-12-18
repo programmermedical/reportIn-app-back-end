@@ -45,7 +45,8 @@ const updatedReportById = async (newData, reportId) => {
 
 const diskStorage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, path.join(__dirname, '../assets'));
+    // cb(null, path.join(__dirname, '../assets'));
+    cb(null, path.join(__dirname, '../../../../../tmp'));
   },
   filename(req, file, cb) {
     cb(
