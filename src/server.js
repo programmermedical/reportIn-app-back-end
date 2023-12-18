@@ -42,11 +42,12 @@ app.use(sessions({
   },
 }));
 
-app.use('/tmp/:file', express.static('public');
 
 const routes = require('./routes/index.routes');
 
 app.use('/', routes);
+
+app.use('/tmp/:file', express.static('public');
 
 app.use((req, res) => {
   res.send('Page is not found!!');
