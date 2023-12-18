@@ -13,8 +13,6 @@ app.use('/auth', authRouter);
 
 app.use('/user', auth, userRouter);
 
-// app.use('/tmp', express.static(path.join(__dirname, './assets')));
-
 app.use('/', auth, reportRouter);
 
 module.exports = app;
