@@ -30,7 +30,7 @@ class ReportController {
       const userId = req.params.userId;
       const createReport = await createdReport(data, userId, file);
       res.send({
-        message: 'Rerport has been successfull created!!',
+        message: 'Report has been successfull created!!',
         data: createReport,
       });
     } catch (error) {

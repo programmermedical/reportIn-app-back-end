@@ -25,6 +25,23 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+const cookieParser = require('cookie-parser');
+const sessions = require('express-session');
+
+app.use(express.json());
+app.use(cookieParser());
+
+const thrtyMinutes = 1000 * 60 * 30;
+app.use(sessions({
+  resave: false,
+  secret: 'thisismysecrctekeyfhrgfgrfrty84fwir1987',
+  saveUninitialized: true,
+  cookie: {
+    sameSite: true,
+    maxAge: thrtyMinutes,
+  },
+}));
+
 app.use(express.static(__dirname));
 
 const routes = require('./routes/index.routes');

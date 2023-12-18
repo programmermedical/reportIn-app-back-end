@@ -10,10 +10,9 @@ const findAllUser = async () => {
   return getAllUser;
 };
 
-const addedUser = async (userId, data, roleLevel, password_) => {
+const addedUser = async (data, roleLevel, password_) => {
   const addUser = await prisma.user.create({
     data: {
-      id: userId,
       username: data.username,
       email: data.email,
       password: password_,

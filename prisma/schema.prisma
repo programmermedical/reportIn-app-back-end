@@ -10,8 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+//   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+// }
+
 model User {
-  id         String       @unique
+  id         String       @unique @default(uuid())
   email      String       @unique
   username   String?
   password   String
@@ -21,13 +27,13 @@ model User {
 }
 
 model Role {
-  id    String @unique
+  id    String @unique @default(uuid())
   level String @unique
   User  User[]
 }
 
 model ReportData {
-  id          String @unique
+  id          String @unique @default(uuid())
   subject     String
   description String
   file        String
