@@ -19,6 +19,7 @@
 + multer
 + http-errors
 + UUID
++ JWT
 
 # Update
 + CRUD report (patch method)
@@ -32,4 +33,4 @@
 + UUID
 
 # Todo
-+ finishing:D
++ installation
