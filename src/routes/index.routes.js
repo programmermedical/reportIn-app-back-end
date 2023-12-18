@@ -9,6 +9,8 @@ const auth = require('../middleware/auth.midleware');
 
 const app = express();
 
+app.use('/tmp/:file', express.static('public'));
+
 app.use('/auth', authRouter);
 
 app.use('/user', auth, userRouter);
