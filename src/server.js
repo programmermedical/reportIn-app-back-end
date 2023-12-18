@@ -42,7 +42,10 @@ app.use(sessions({
   },
 }));
 
-app.use(express.static(__dirname));
+app.use('/tmp/:file', async (req, res) => {
+  const { file } = req.params;
+  res.sendFile(`../../../../../tmp/${file}`);
+});
 
 const routes = require('./routes/index.routes');
 
