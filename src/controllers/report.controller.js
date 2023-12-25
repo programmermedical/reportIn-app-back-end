@@ -35,10 +35,10 @@ class ReportController {
         // data: createReport,
       });
     } catch (error) {
-      res.status(400).send({
-        status: false,
-        message: 'Report is not found!!',
-      });
+      // res.status(400).send({
+      //   status: false,
+      //   message: 'Report is not found!!!',
+      // });
       throw Error(error);
     }
   };
