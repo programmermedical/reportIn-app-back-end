@@ -16,7 +16,7 @@ class ReportController {
       res.send(report);
     } catch (error) {
       res.status(400).send({
-        status: 400,
+        status: false,
         message: 'Report is not found!!',
       });
     }
@@ -29,13 +29,14 @@ class ReportController {
       // eslint-disable-next-line radix
       const userId = req.params.userId;
       const createReport = await createdReport(data, userId, file);
-      res.send({
+      res.status(200).send({
+        status: true,
         message: 'Report has been successfull created!!',
         data: createReport,
       });
     } catch (error) {
       res.status(400).send({
-        status: 400,
+        status: false,
         message: 'Report is not found!!',
       });
       throw Error(error);
@@ -47,13 +48,13 @@ class ReportController {
       // eslint-disable-next-line radix
       const reportId = req.params.reportId;
       await deletedReport(reportId);
-      res.send({
+      res.status(200).send({
+        status: true,
         message: 'Report has been successfull deleted',
-        status: 200,
       });
     } catch (error) {
       res.status(400).send({
-        status: 400,
+        status: false,
         message: 'Report is not found!!',
       });
     }
@@ -64,17 +65,17 @@ class ReportController {
       const data = req.body;
       const reportId = req.params.reportId;
       if (!(data.subject && data.description && data.file)) {
-        res.send({
+        res.status(400).send({
+          status: false,
           message: 'Some field is missing',
-          status: 400,
         });
         return;
       }
       const updateReport = await updatedReportById(data, reportId);
-      res.send({
+      res.status(200).send({
+        status: true,
         message: 'Report has been successfull updated',
         data: updateReport,
-        status: 200,
       });
     } catch (error) {
       res.status(400).send({
@@ -90,7 +91,7 @@ class ReportController {
       const reportId = req.params.reportId;
       const getHistory = await getHistoryByReportId(reportId);
       if (!getHistory) {
-        res.send({
+        res.status(400).send({
           status: 400,
           message: 'Report is undefined',
         });
@@ -128,14 +129,14 @@ class ReportController {
       // eslint-disable-next-line radix
       const userId = req.params.userId;
       const getHistory = await getHistoryByUserId(userId);
-      res.send({
+      res.status(200).send({
         data: getHistory,
-        status: 200,
+        status: true,
       });
     } catch (error) {
       res.status(400);
       res.send({
-        status: 400,
+        status: false,
         message: 'Report is undefined!!',
       });
     }
