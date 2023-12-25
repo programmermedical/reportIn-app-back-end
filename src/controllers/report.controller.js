@@ -24,15 +24,15 @@ class ReportController {
 
   static postReport = async (req, res) => {
     try {
-      const data = req.body;
-      const file = req.file.path;
-      // eslint-disable-next-line radix
-      const userId = req.params.userId;
-      const createReport = await createdReport(data, userId, file);
+      // const data = req.body;
+      // const file = req.file.path;
+      // // eslint-disable-next-line radix
+      // const userId = req.params.userId;
+      // const createReport = await createdReport(data, userId, file);
       res.status(200).send({
         status: true,
         message: 'Report has been successfull created!!',
-        data: createReport,
+        // data: createReport,
       });
     } catch (error) {
       res.status(400).send({
